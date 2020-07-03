@@ -6,7 +6,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t smileajw1004/docker-fullstack-app -f ./client/Dockerfile.dev ./client
+  - docker build -t smileajw1004/react-test-app -f ./frontend/Dockerfile.dev ./frontend
 
 script:
   - docker run -e CI=true smileajw1004/docker-frontend npm test
@@ -17,7 +17,7 @@ after_success:
   - docker build -t smileajw1004/docker-mysql ./mysql
   - docker build -t smileajw1004/docker-nginx ./nginx
 
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
 
   - docker push smileajw1004/docker-frontend
   - docker push smileajw1004/docker-backend
