@@ -12,7 +12,7 @@ script:
   - docker run -e CI=true smileajw1004/docker-frontend npm test
 
 after_success:
-  - docker build -t smileajw1004/docker-frontend ./client
+  - docker build -t smileajw1004/docker-frontend ./frontend
   - docker build -t smileajw1004/docker-backend ./backend
   - docker build -t smileajw1004/docker-mysql ./mysql
   - docker build -t smileajw1004/docker-nginx ./nginx
